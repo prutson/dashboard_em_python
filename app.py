@@ -49,30 +49,22 @@ app.layout = html.Div(children=[
             html.Div(children=[
                 dbc.Row([
                     dbc.Col(
-                        dbc.Card([
                             dbc.CardBody([
-                                html.H4('By City', className="card-title"),
                                 dcc.Graph(id='city_fig', style={'height':'30vh'})
                             ])
-                        ])
                     , md=4),
                     dbc.Col(
-                        dbc.Card([
+
                             dbc.CardBody([
-                                html.H4('By Gender', className="card-title"),
                                 dcc.Graph(id='gender_fig', style={'height':'30vh'})
                             ])
-                        ])
                     , md=4),
                     dbc.Col(
-                        dbc.Card([
                             dbc.CardBody([
-                                html.H4('By Payment', className="card-title"),
                                 dcc.Graph(id='pay_fig', style={'height':'30vh'})
                             ])
-                        ])
                     , md=4),
-                ]),
+                ], style={'height':'40vh', 'padding-top':'30px'}),
                 dcc.Graph(id='income_per_product_fig', style={'height':'60vh'})
             ])
             , md=10)
@@ -120,9 +112,9 @@ def render_graph(cities, main_variable):
                                 orientation="h",
                                 barmode='group')
 
-    fig_city.update_layout(margin=dict(l=0, r=0, t=20, b=20))
-    fig_gender.update_layout(margin=dict(l=0, r=0, t=20, b=20))
-    fig_payment.update_layout(margin=dict(l=0, r=0, t=20, b=20))
+    fig_city.update_layout(margin=dict(l=0, r=0, t=50, b=20), title_text='By City')
+    fig_gender.update_layout(margin=dict(l=0, r=0, t=50, b=20), title_text='By Gender')
+    fig_payment.update_layout(margin=dict(l=0, r=0, t=50, b=20), title_text='By Payments')
     fig_product_income.update_layout(margin=dict(l=0, r=0, t=20, b=20))
 
     return fig_city, fig_payment, fig_gender, fig_product_income
